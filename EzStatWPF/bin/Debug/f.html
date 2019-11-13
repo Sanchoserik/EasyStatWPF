@@ -1,0 +1,455 @@
+<!-- saved from url=(0023)http://www.contoso.com/ -->
+<!DOCTYPE HTML>
+<HTML>
+<HEAD>
+    <meta http-equiv="X-UA-Compatible" content="IE=9" >
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=utf-8">
+	<script src="jquery-3.2.1.min.js"></script>
+	<TITLE>1</TITLE>	
+    <style>    
+   td
+   {
+   border: 1px solid black;
+   }
+   table 
+   { 
+   border: 1px solid black;
+   }   
+</style> 
+	
+	
+<script language=Javascript>
+function isNumber(evt) {   
+    var iKeyCode = (evt.which) ? evt.which : evt.keyCode
+        if (iKeyCode != 46 && iKeyCode != 188 && iKeyCode > 31 && (iKeyCode < 48 || iKeyCode > 57))
+            return false;			
+    return true;
+	}
+
+function del_tr(btn)  
+{   
+   var row = btn.parentNode.parentNode;
+   row.parentNode.removeChild(row);
+ 
+   var table = document.getElementById('edittable0');
+      
+   var x = 0;
+   for (var i = 0, row; row = table.rows[i]; i++)   
+   { 
+     if($(row).attr('name') != null && $(row).attr('name') != 'nonedit')
+	 {
+	  ++x;
+	  var truen = "XRow"+x;
+	  var id = ($(row).attr('name'));
+	  changename(row, truen);
+
+	  for (var c = 0, m = table.rows[i].cells.length; c < m; c++) {
+	   var d = table.rows[i].cells[c].innerHTML;
+	   var startind = d.indexOf("TR");
+	   
+	   var textbox_value = table.rows[i].cells[c].childNodes[0].value;
+	    
+	   var oldval = d.slice(startind);
+        var endind = d.indexOf("\">"); 
+	   oldval = d.slice(startind,endind);
+       
+	   var newval = "TR"+(c+1)+"X"+ truen.slice(4);
+	   d = d.replace(oldval,newval);
+	   	   
+	   startind = d.indexOf(">");
+	   d = d.slice(0,startind) + "\"  type =text size = 1 value =\"\""+d.slice(startind);  
+	   	   
+	   table.rows[i].cells[c].innerHTML = d;
+	   table.rows[i].cells[c].childNodes[0].value = textbox_value;
+	   
+	  }
+	 
+	 } 
+  }
+   
+    
+}
+
+function changename(row_id,row_name){
+    var row = document.getElementById(row_id);
+    row_id.setAttribute('name',row_name);
+    return true;
+}
+
+function del_id(id)  
+{   
+ del_tr(document.getElementById(id));
+}
+	
+$(document).ready(function(){
+  $(".addrow").click(function(){   
+		   
+ 		    var s = $('#edittable0 tr:last').attr('name');			
+				
+		    var colid = 0;
+			var rowid = 1;	
+        	var trid = 0;
+		
+		    if(s != "nonedit")
+			{
+			 var row = s.substring(4,s.length);
+			 rowid = parseInt(row)+1;
+			 trid = row;
+			}
+			
+            $(".myTable tr:last").after("<tr name=XRow"+ ++trid +"><td><input type =text size = 1 value = \"\" name = TR"+ ++colid+"X"+ rowid+"></td>"+
+			"<td><input type =text size = 1 value = \"\" name = TR"+ ++colid+"X"+ rowid+"></td>"+
+			"<td><input type =text size = 1 value = \"\" name = TR"+ ++colid+"X"+ rowid+"></td>"+
+			"<td><input type =text size = 1 value = \"\" name = TR"+ ++colid+"X"+ rowid+"></td>"+
+			"<td><input type =text size = 1 value = \"\" name = TR"+ ++colid+"X"+ rowid+"></td>"+
+			"<td><input type =text size = 1 value = \"\" name = TR"+ ++colid+"X"+ rowid+"></td>"+
+			"<td><input type =text size = 1 value = \"\" name = TR"+ ++colid+"X"+ rowid+"></td>"+
+			"<td><input type =text size = 1 value = \"\" name = TR"+ ++colid+"X"+ rowid+">"+
+			"<a href='' onclick='del_tr(this); return false;'>Del</a></td>"+
+			"</tr>");
+		
+		});            
+	   // Find and remove selected table rows
+        $(".delrow").click(function(){
+	          if( $(".myTable tr:last").attr("name") == "nonedit" ) 
+			  { alert( "Не можна видалити далі цього рядка" );}
+			  else { $(".myTable tr:last").remove();} 
+       // revert columns and rows            
+            });	 				
+    });    
+</script>		
+	
+</HEAD>
+<BODY>
+<TABLE align="Right" cellpadding=5 cellspacing=0 >	
+	<TR VALIGN=TOP>
+		<TD WIDTH=200 >
+		<font size=2>Ідентифікаційний код ЄДРПОУ</font>
+		</TD>
+		<TD WIDTH=5 >
+			<input type = "text" size = 1 name = "E1" readonly>
+		</TD>
+		<TD WIDTH=5>
+			<input type = "text" size = 1 name = "E2" readonly>
+		</TD>
+		<TD WIDTH=5 >
+			<input type = "text" size = 1 name = "E3" readonly>
+		</TD>
+		<TD WIDTH=5 >
+			<input type = "text" size = 1 name = "E4" readonly>
+		</TD>
+		<TD WIDTH=5 >
+			<input type = "text" size = 1 name = "E5" readonly>
+		</TD>
+		<TD WIDTH=5 >
+			<input type = "text" size = 1 name = "E6" readonly>
+		</TD>
+		<TD WIDTH=5 >
+			<input type = "text" size = 1 name = "E7" readonly>
+		</TD>
+		<TD WIDTH=5 >
+			<input type = "text" size = 1 name = "E8" readonly>
+		</TD>
+	</TR>
+</TABLE>
+<BR>
+<BR>
+<BR>
+<P ALIGN=CENTER> <FONT SIZE=2 STYLE="font-size: 11pt"> <B>Державне
+статистичне спостереження</B></FONT></P>		
+		<TABLE  CELLPADDING=7 CELLSPACING=0 Align = "center">	
+			<TR>
+				<TD Width = 450 VALIGN=TOP >
+					<P ALIGN=CENTER><FONT SIZE=2 STYLE="font-size: 9pt"><B>Конфіденційність
+					статистичної інформації забезпечується
+					<BR>
+					статтею
+					21 Закону України &quot;Про державну
+					статистику&quot;</B></FONT></FONT>
+					</P>
+				</TD>
+			</TR>
+		</TABLE>
+<BR>
+
+<TABLE CELLPADDING=7 CELLSPACING=0 align = "center">	
+	<TR>
+		<TD width =620 valign = top>
+			<P  ALIGN=CENTER><FONT SIZE=2 STYLE="font-size: 9pt"><B>Порушення
+			порядку подання або використання
+			даних державних статистичних
+			спостережень тягне за собою
+			відповідальність, яка встановлена
+			статтею 186³ Кодексу України про
+			адміністративні правопорушення</B></FONT></P>
+		</TD>
+	</TR>
+</TABLE>
+<P ALIGN=CENTER STYLE="margin-right: 0.10in">
+<FONT SIZE=2><B>ЗВІТ ПРО ВЗАЄМОРОЗРАХУНКИ З
+НЕРЕЗИДЕНТАМИ</B></FONT></P>
+
+<P ALIGN=CENTER> <FONT SIZE=2 STYLE="font-size: 11pt">станом
+на <input type="text" size = 30 name="MY_DATE"> </FONT></P>
+<P ALIGN=CENTER><BR>
+</P>
+
+<TABLE  CELLPADDING=7 CELLSPACING=0 align= "center">
+	<TR VALIGN=TOP>
+		<TD WIDTH=273 >
+			<P ALIGN=CENTER><FONT SIZE=2>Подають:</FONT></P>
+		</TD>
+		<TD WIDTH=161 >
+			<P  ALIGN=CENTER><FONT SIZE=2>Термін
+			подання</FONT></P>
+		</TD>
+		<TD WIDTH=226 >
+			<P  ALIGN=CENTER><BR>
+			</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=273 HEIGHT=30 VALIGN=TOP >
+			<P  ALIGN=LEFT><FONT SIZE=2>юридичні
+			особи (підприємства) за переліком,
+			установленим органами державної
+			статистики</FONT></P>			
+			<P ALIGN=LEFT >
+			<FONT SIZE=2>- територіальному органу
+			Держстату</FONT></P>
+		</TD>
+		<TD WIDTH=161 valign ="top">
+			<P  ALIGN=CENTER><FONT SIZE=2>річна
+			– не пізніше 9 лютого,
+			квартальна
+			– не пізніше 10 числа місяця, що настає
+			за звітним періодом</FONT></P>
+		</TD>
+		<TD WIDTH=226 valign = "top" >
+			<p ALIGN=CENTER>№ <FONT SIZE=2>1- <BR>
+			(річна, квартальна <BR>
+		    ЗАТВЕРДЖЕНО <BR>
+			наказ Держстату України <BR>
+			07.07.2012р.
+			№ 286(зі змінами)</FONT></P>
+		</TD>
+	</TR>
+</TABLE>
+<BR>
+<TABLE width="700" CELLPADDING=7 CELLSPACING=0 align="center">
+	<TR>
+		<TD VALIGN=TOP >
+			<P  ALIGN=LEFT><FONT SIZE=2><B>Респондент:</B></FONT></P>
+			<P ALIGN=LEFT><FONT SIZE=2>Найменування:</font></p>  
+			<div align="center"><input type="text" size = 100 name= "FIRM_NAME" readonly></div>			
+			
+			<P ALIGN=LEFT><FONT SIZE=2>Місцезнаходження(юридична адреса):</font></p>
+			<div align="center"><input  type="text" size = 100 name = "FIRM_ADR" readonly></div>
+			<P align="center"><FONT SIZE=1 STYLE="font-size: 8pt"><I>(поштовий
+			індекс, область/ АР Крим, район, населений
+			пункт, вулиця/ провулок, площа тощо						
+			№ будинку/ корпусу, № квартири/ офісу)</I></FONT></P>
+			
+			<P ALIGN=LEFT><FONT SIZE=2>Адреса
+			здійснення діяльності, щодо якої
+			подається форма звітності (фактична
+			адреса): </FONT></P>
+			
+			<div align="center"> <input  type="text" size = 100 name = "FIRM_ADR_FIZ" readonly></div>
+			<P  ALIGN=CENTER><FONT SIZE=1 STYLE="font-size: 8pt"><I>(поштовий
+			індекс, область/ АР Крим, район, населений
+			пункт, вулиця/ провулок, площа, тощо, будинку/
+			корпусу, № квартири/ офісу)</I></FONT></P>
+		</TD>
+	</TR>
+</TABLE>
+<BR>
+
+
+
+<!--START0-->
+	<TABLE  width="900" align="center" CELLPADDING=7 CELLSPACING=0 class = "myTable" id="edittable0">
+		<caption align="right"><FONT SIZE=2>(тис.грн.з одним десятковим знаком)</FONT></caption>
+		<TR>
+			<TD ROWSPAN=3 WIDTH=189 HEIGHT=4 >
+				<P ALIGN=CENTER><FONT SIZE=2>Найменування
+				показників</FONT></P>
+			</TD>
+			<TD ROWSPAN=3 WIDTH=34
+				<P   ALIGN=CENTER>№ <FONT SIZE=2>рядка</FONT></P>
+			</TD>
+			<TD COLSPAN=3 WIDTH=210 >
+				<P   ALIGN=CENTER><FONT SIZE=2>Дебіторська</FONT></P>
+			</TD>
+			<TD COLSPAN=3 WIDTH=203 >
+				<P   ALIGN=CENTER><FONT SIZE=2>Кредиторська</FONT></P>
+			</TD>
+		</TR>
+		<TR>
+			<TD ROWSPAN=2 WIDTH=82 >
+				<P   ALIGN=CENTER><FONT SIZE=2>довго-строкова
+				заборго-ваність<I>(рахунок 18)</i></FONT></P>
+			</TD>
+			<TD COLSPAN=2 WIDTH=129 >
+				<P   ALIGN=CENTER><FONT SIZE=2>поточна
+				заборгованість</FONT></P>
+			</TD>
+			<TD ROWSPAN=2 WIDTH=61>
+				<P   ALIGN=CENTER><FONT SIZE=2>довго-строкова
+				заборго-ваність
+				<I>(рахунки 51,55)</FONT></P>
+			</TD>
+			<TD COLSPAN=2 WIDTH=127 >
+				<P   ALIGN=CENTER><FONT SIZE=2>поточна
+				заборгованість</FONT></P>
+			</TD>
+		</TR>
+		<TR>
+			<TD WIDTH=54 >
+				<P   ALIGN=CENTER><FONT SIZE=2>усього
+				<i>(рахунки 3,36,37)</I></FONT></P>
+			</TD>
+			<TD WIDTH=61 >
+				<P   ALIGN=CENTER><FONT SIZE=2>з неї прострочена
+				<i>(гр.3≤гр.2)</i></FONT></P>
+			</TD>
+			<TD WIDTH=52 >
+				<P   ALIGN=CENTER><FONT SIZE=2>усього
+				<I>(рахунки 61,62,
+				63,68)</I></FONT></P>
+			</TD>
+			<TD WIDTH=61 >
+				<P   ALIGN=CENTER><FONT SIZE=2>з неї простро-чена
+				<i>гр.6≤гр.5)</i></FONT></P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=189 >
+				<P   ALIGN=CENTER><FONT SIZE=2>А</FONT></P>
+			</TD>
+			<TD WIDTH=34 >
+			<P   ALIGN=CENTER><FONT SIZE=2>Б</FONT></P>
+			</TD>
+			<TD WIDTH=82>
+			<P   ALIGN=CENTER><FONT SIZE=2>1</FONT></P>
+			</TD>
+			<TD WIDTH=54 >
+			<P   ALIGN=CENTER><FONT SIZE=2>2</FONT></P>
+			</TD>
+			<TD WIDTH=61 >
+			<P   ALIGN=CENTER><FONT SIZE=2>3</FONT></P>
+			</TD>
+			<TD WIDTH=61 >
+			<P   ALIGN=CENTER><FONT SIZE=2>4</FONT></P>
+			</TD>
+			<TD WIDTH=52 >
+			<P   ALIGN=CENTER><FONT SIZE=2>5</FONT></P>
+			</TD>
+			<TD WIDTH=61 >
+				<P   ALIGN=CENTER><FONT SIZE=2>6</FONT></P>
+			</TD>
+		</TR>
+		<TR VALIGN=BOTTOM class="nonedit" name="nonedit">
+			<TD WIDTH=189 HEIGHT=92 >
+			<P   ALIGN=LEFT STYLE="margin-top: 0.04in">
+				<FONT SIZE=2>Заборгованість за розрахунками
+				з нерезидентами за товари, роботи,
+				послуги (включаючи заборгованість,
+				забезпечену векселями, авансові
+				платежі та внутрішні розрахунки)</FONT></P>
+			</TD>
+			<TD WIDTH=34 valign="middle">
+			<P   ALIGN=CENTER><FONT SIZE=2>010</FONT></P>
+			</TD>
+			<TD WIDTH=82 valign="middle" >
+			<P ALIGN="right"> <input type="text" size = 10 name = "A010_1" value="0" onkeypress="return isNumber(event)" >
+				</P>
+			</TD>
+			<TD WIDTH=54 valign="middle">
+			<P   ALIGN=RIGHT><input type="text" size = 10 name = "A010_2" value="0"  onkeypress="return isNumber(event)" />
+				</P>
+			</TD>
+			<TD WIDTH=61 valign="middle">
+			<P   ALIGN=RIGHT><input type="text" size = 10 name = "A010_3" value="0"  onkeypress="return isNumber(event)" />
+				</P>
+			</TD>
+			<TD WIDTH=61 valign="middle">
+			<P   ALIGN=RIGHT><input type="text" size = 10 name = "A010_4"  value="0" onkeypress="return isNumber(event)"/ >
+				</P>
+			</TD>
+			<TD WIDTH=52 valign="middle">
+			<P   ALIGN=RIGHT><input type="text" size = 10 name = "A010_5" value="0" onkeypress="return isNumber(event)" />
+				</P>
+			</TD>
+			<TD WIDTH=61 valign="middle">
+				<P   ALIGN=RIGHT><input type="text" size = 10 name = "A010_6" value="0" onkeypress="return isNumber(event)" />
+				</P>
+			</TD>
+		</TR>
+		<!--NEWROW-->
+	</TABLE>
+	<!--END0-->
+<br>
+
+<br>
+<input type = "button" size = 200 name ="addrow" class = "addrow" align = "center">
+<BR>
+<TABLE CELLPADDING=7 CELLSPACING=0 align = "center">
+	<caption align="right"><FONT SIZE=2>Причини зміни обсягів дебіторської
+та кредиторської заборгованості
+порівняно з попереднім періодом звітного
+року</FONT></caption>
+	<TR>
+		<TD WIDTH=760 HEIGHT=4 VALIGN=TOP >			
+			<p><textarea class="tArea" rows="3" cols="92" name="T2RXXXXG1S" ></textarea></p>			
+		</TD>
+	</TR>
+</TABLE>
+<BR>
+
+<TABLE align = "center" CELLPADDING=7 CELLSPACING=0>
+<tr>
+  <td>
+  <P ALIGN="left"><FONT SIZE=2>____________________________________________ <BR>
+  Місце підпису керівника (власника) та/ або особи,(ПІБ) відповідальної <BR>
+  за достовірність наданої інформації</FONT></P> 
+  </td>
+  <td>
+  <P   ALIGN="center"><FONT SIZE=2>                         
+<input type="text" size = 40 name="VIK_RUK" <BR>                                                                
+(ПІБ)  </FONT>
+</P>
+  </td>
+</tr>
+<tr>
+<td>
+  <P ALIGN="left"><FONT SIZE=2>____________________________________________ <BR>
+  </FONT></P> 
+  </td>
+  <td>
+  <P   ALIGN="center"><FONT SIZE=2>                         
+<input type="text" size = 40 name="VIK"> <BR>                                                                
+(ПІБ)  </FONT>
+</P>
+  </td>
+</tr>
+</TABLE>
+<BR>
+
+<table align = "center" CELLPADDING=7 CELLSPACING=0>
+<tr>
+<td><P   ALIGN="center"><FONT SIZE=2>телефон:<font></p></td>
+<td><div align="center"><input type="text" size = 40 name="VIK_TEL"></div></td>
+</tr>
+<tr>
+<td><P   ALIGN="center"><FONT SIZE=2>факс:<font></p></td>
+<td><div align="center"><input type="text" size = 40 name="FIRM_FAXOR"></div></td>
+</tr>
+<tr>
+<td><P   ALIGN="center"><FONT SIZE=2>електронна пошта:<font></p></td>
+<td><div align="center"><input type="text" size = 40 name="VIK_EMAIL"></div></td>
+</tr>
+</table>
+</BODY>
+</HTML>
+<!--end-->

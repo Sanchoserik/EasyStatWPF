@@ -1,0 +1,35 @@
+﻿<Window x:Class="EzStatWPF.LoadFileWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EzStatWPF"
+        mc:Ignorable="d"
+         ResizeMode="NoResize"
+        Title="LoadFileWindow" Height="250" Width="550">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="185*"/>
+            <RowDefinition Height="36*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="31*"/>
+            <ColumnDefinition Width="436*"/>
+            <ColumnDefinition Width="27*"/>
+        </Grid.ColumnDefinitions>
+        <Grid HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <ListBox x:Name="SaveList" Grid.Column="1" HorizontalAlignment="Left" Height="165" Margin="129,10,0,0" VerticalAlignment="Top" Width="147" SelectionChanged="SaveList_SelectionChanged"/>
+        <Button x:Name="Load" Content="Відкрити" Grid.Column="1" HorizontalAlignment="Left" Margin="373,6,0,0" Grid.Row="1" VerticalAlignment="Top" Width="97" Click="Load_Click"/>
+        <Label Content="Дата" Grid.Column="1" HorizontalAlignment="Left" Margin="281,15,0,0" VerticalAlignment="Top"/>
+        <Label Content="Опис" Grid.Column="1" HorizontalAlignment="Left" Margin="281,46,0,0" VerticalAlignment="Top"/>
+        <TextBlock x:Name="sdescr" Grid.Column="1" HorizontalAlignment="Left" Margin="324,46,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="129" Width="146"/>
+        <Label x:Name="sdate" Content="" Grid.Column="1" HorizontalAlignment="Left" Margin="324,15,0,0" VerticalAlignment="Top" Width="146"/>
+        <Button x:Name="DeleteSave" Content="Видалити" Grid.Column="1" HorizontalAlignment="Left" Margin="10,5,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Click="DeleteSave_Click"/>
+        <Label Content="Звітній рік" Grid.Column="1" HorizontalAlignment="Left" Margin="4,5,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="zYear" Grid.Column="1" HorizontalAlignment="Left" Margin="4,36,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="FilterSelectionChanged"/>
+        <ComboBox x:Name="zPeriod" Grid.Column="1" HorizontalAlignment="Left" Margin="4,98,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="FilterSelectionChanged"/>
+        <Label Content="Період" Grid.Column="1" HorizontalAlignment="Left" Margin="4,67,0,0" VerticalAlignment="Top"/>
+
+    </Grid>
+</Window>

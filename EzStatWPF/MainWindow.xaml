@@ -1,0 +1,91 @@
+﻿<Window x:Name="ProfileSelect" x:Class="EzStatWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EzStatWPF"
+        mc:Ignorable="d"
+         Title="Вибір профілю" Height="620 px" Width="800 px" Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}" Closed="ProfileSelect_Closed" >
+    <Grid Margin="10,0,2,0" Height="151" VerticalAlignment="Top">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="6*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+        <ComboBox x:Name="Profiles" Grid.Column="1" Margin="10,11,10,0" Grid.Row="1" VerticalAlignment="Top" Height="41" VerticalContentAlignment="Center" FontSize="18" SelectionChanged="Profiles_SelectionChanged"/>
+        <Button x:Name="SelectProfile" Content="Вибрати" Margin="10,11,10,0" Grid.Column="2"  Grid.Row="1" Height="41" VerticalAlignment="Top" FontSize="18" FontWeight="Bold" Click="SelectProfile_Click"/>
+        <Grid Height="340" Margin="0,45,0,-340" Grid.Row="2" VerticalAlignment="Top" Grid.ColumnSpan="4">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="10*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="150*"/>
+                <ColumnDefinition Width="257*"/>
+                <ColumnDefinition Width="281*"/>
+                <ColumnDefinition Width="92*"/>
+            </Grid.ColumnDefinitions>
+            <Label Content="Фізична особа" Grid.Column="1" Margin="10,0,0,0" VerticalAlignment="Center" RenderTransformOrigin="0.395,-0.476" Width="240" HorizontalAlignment="Left" VerticalContentAlignment="Center" Grid.Row="0" Height="24"/>
+            <Label Content="Назва Фірми" Grid.Column="1" Margin="10,0,0,0" VerticalAlignment="Center" RenderTransformOrigin="0.395,-0.476" Width="240" HorizontalAlignment="Left" VerticalContentAlignment="Center" Grid.Row="1" Height="24"/>
+            <Label Content="Юридичний адрес" Grid.Column="1" Margin="10,0,0,0" VerticalAlignment="Center" RenderTransformOrigin="0.395,-0.476" Width="240" HorizontalAlignment="Left" VerticalContentAlignment="Center" Grid.Row="2" Height="24"/>
+            <Label Content="Фізичний адрес" Grid.Column="1" Margin="10,0,0,0" VerticalAlignment="Center" RenderTransformOrigin="0.395,-0.476" Width="240" HorizontalAlignment="Left" VerticalContentAlignment="Center" Grid.Row="3" Height="24"/>
+            <Label Content="ЄДРПОУ" Grid.Column="1" Margin="10,0,0,0" VerticalAlignment="Center" RenderTransformOrigin="0.395,-0.476" Width="240" HorizontalAlignment="Left" VerticalContentAlignment="Center" Grid.Row="4" Height="24"/>
+            <Label Content="Керівник" Grid.Column="1" Margin="10,0,0,0" VerticalAlignment="Center" RenderTransformOrigin="0.395,-0.476" Width="240" HorizontalAlignment="Left" VerticalContentAlignment="Center" Grid.Row="5" Height="24"/>
+            <Label Content="Особа відповідальна за достовірність" Grid.Column="1" Margin="10,0,0,0" VerticalAlignment="Center" RenderTransformOrigin="0.395,-0.476" Width="240" HorizontalAlignment="Left" VerticalContentAlignment="Center" Grid.Row="6" Height="24"/>
+            <Label Content="Електронна пошта" Grid.Column="1" Margin="10,0,0,1" VerticalAlignment="Center" RenderTransformOrigin="0.395,-0.476" Width="240" HorizontalAlignment="Left" VerticalContentAlignment="Center" Grid.Row="7" Height="24"/>
+            <Label Content="Факс" Grid.Column="1" Margin="10,0,0,0" VerticalAlignment="Center" RenderTransformOrigin="0.395,-0.476" Width="240" HorizontalAlignment="Left" VerticalContentAlignment="Center" Grid.Row="8" Height="24"/>
+            <Label Content="Телефон" Grid.Column="1" Margin="10,1,0,0" VerticalAlignment="Center" RenderTransformOrigin="0.395,-0.476" Width="240" HorizontalAlignment="Left" VerticalContentAlignment="Center" Grid.Row="9" Height="24"/>
+            <Label Content="Код області" Grid.Column="1" Margin="10,0,0,0" VerticalAlignment="Center" RenderTransformOrigin="0.395,-0.476" Width="240" HorizontalAlignment="Left" VerticalContentAlignment="Center" Grid.Row="10" Height="24"/>
+            <Label Content="Код адміністративного району" Grid.Column="1" Margin="10,0,0,1" VerticalAlignment="Center" RenderTransformOrigin="0.395,-0.476" Width="240" HorizontalAlignment="Left" VerticalContentAlignment="Center" Grid.Row="11" Height="24"/>
+            <Label Content="Код території за КОАТУУ" Grid.Column="1" Margin="10,0,0,0" VerticalAlignment="Center" RenderTransformOrigin="0.395,-0.476" Width="240" HorizontalAlignment="Left" VerticalContentAlignment="Center" Grid.Row="12" Height="24"/>
+            <Label Content="Код КВЕД" Grid.Column="1" Margin="10,1,0,0" VerticalAlignment="Center" RenderTransformOrigin="0.395,-0.476" Width="240" HorizontalAlignment="Left" VerticalContentAlignment="Center" Grid.Row="13" Height="24"/>
+
+            <Label x:Name="Fiz_o" Content="Фізична особа" Grid.Column="2" Margin="10,0,0,0" VerticalAlignment="Center" RenderTransformOrigin="0.395,-0.476" Width="240" HorizontalAlignment="Left" VerticalContentAlignment="Center" Grid.Row="0" Height="24"/>
+            <Label x:Name="Firm_name" Content="Назва Фірми" Grid.Column="2" Margin="10,0,0,0" VerticalAlignment="Center" RenderTransformOrigin="0.395,-0.476" Width="240" HorizontalAlignment="Left" VerticalContentAlignment="Center" Grid.Row="1" Height="24"/>
+            <Label x:Name="Firm_adr" Content="Юридичний адрес" Grid.Column="2" Margin="10,0,0,0" VerticalAlignment="Center" RenderTransformOrigin="0.395,-0.476" Width="240" HorizontalAlignment="Left" VerticalContentAlignment="Center" Grid.Row="2" Height="24"/>
+            <Label x:Name="Firm_adr_fiz" Content="Фізичний адрес" Grid.Column="2" Margin="10,0,0,0" VerticalAlignment="Center" RenderTransformOrigin="0.395,-0.476" Width="240" HorizontalAlignment="Left" VerticalContentAlignment="Center" Grid.Row="3" Height="24"/>
+            <Label x:Name="Edrpou" Content="ЄДРПОУ" Grid.Column="2" Margin="10,0,0,0" VerticalAlignment="Center" RenderTransformOrigin="0.395,-0.476" Width="240" HorizontalAlignment="Left" VerticalContentAlignment="Center" Grid.Row="4" Height="24"/>
+            <Label x:Name="Vik" Content="Керівник" Grid.Column="2" Margin="10,0,0,0" VerticalAlignment="Center" RenderTransformOrigin="0.395,-0.476" Width="240" HorizontalAlignment="Left" VerticalContentAlignment="Center" Grid.Row="5" Height="24"/>
+            <Label x:Name="Vik_ruk" Content="Особа відповідальна за достовірність" Grid.Column="2" Margin="10,0,0,0" VerticalAlignment="Center" RenderTransformOrigin="0.395,-0.476" Width="240" HorizontalAlignment="Left" VerticalContentAlignment="Center" Grid.Row="6" Height="24"/>
+            <Label x:Name="Firm_email" Content="Електронна пошта" Grid.Column="2" Margin="10,0,0,1" VerticalAlignment="Center" RenderTransformOrigin="0.395,-0.476" Width="240" HorizontalAlignment="Left" VerticalContentAlignment="Center" Grid.Row="7" Height="24"/>
+            <Label x:Name="Firm_faxorg" Content="Факс" Grid.Column="2" Margin="10,0,0,0" VerticalAlignment="Center" RenderTransformOrigin="0.395,-0.476" Width="240" HorizontalAlignment="Left" VerticalContentAlignment="Center" Grid.Row="8" Height="24"/>
+            <Label x:Name="Vik_tel" Content="Телефон" Grid.Column="2" Margin="10,1,0,0" VerticalAlignment="Center" RenderTransformOrigin="0.395,-0.476" Width="240" HorizontalAlignment="Left" VerticalContentAlignment="Center" Grid.Row="9" Height="24"/>
+            <Label x:Name="C_reg" Content="Код області" Grid.Column="2" Margin="10,0,0,0" VerticalAlignment="Center" RenderTransformOrigin="0.395,-0.476" Width="240" HorizontalAlignment="Left" VerticalContentAlignment="Center" Grid.Row="10" Height="24"/>
+            <Label x:Name="C_raj" Content="Код адміністративного району" Grid.Column="2" Margin="10,0,0,1" VerticalAlignment="Center" RenderTransformOrigin="0.395,-0.476" Width="240" HorizontalAlignment="Left" VerticalContentAlignment="Center" Grid.Row="11" Height="24"/>
+            <Label x:Name="Firm_spato" Content="Код території за КОАТУУ" Grid.Column="2" Margin="10,0,0,0" VerticalAlignment="Center" RenderTransformOrigin="0.395,-0.476" Width="240" HorizontalAlignment="Left" VerticalContentAlignment="Center" Grid.Row="12" Height="24"/>
+            <Label x:Name="Firm_kved" Content="Код КВЕД" Grid.Column="2" Margin="10,1,0,0" VerticalAlignment="Center" RenderTransformOrigin="0.395,-0.476" Width="240" HorizontalAlignment="Left" VerticalContentAlignment="Center" Grid.Row="13" Height="24"/>
+
+        </Grid>
+        <Grid Height="59" Margin="-12,413,0,-429" Grid.Row="2" VerticalAlignment="Top" Grid.ColumnSpan="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="125*"/>
+                <ColumnDefinition Width="146*"/>
+                <ColumnDefinition Width="125*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Button x:Name="EditCurrentProfile" Content="Редагування вибраного профілю" Grid.Column="1" HorizontalAlignment="Center" Margin="41,5,45,0" VerticalAlignment="Top" Width="206" VerticalContentAlignment="Center" Click="ProfileEditor_Click" Height="20"/>
+            <Button x:Name="CreateNewProfile" Content="Створити новий профіль" Grid.Column="1" HorizontalAlignment="Center" Margin="41,5,45,0" VerticalAlignment="Top" Width="206" VerticalContentAlignment="Center" Grid.Row="1" Height="20" Click="ProfileEditor_Copy_Click"/>
+        </Grid>
+    </Grid>
+</Window>
